@@ -10,7 +10,7 @@ export async function GET() {
     site: "https://sampleastro.netlify.app",
     items: posts.map(post => ({
       title: post.data.title,
-      pubDate: post.data.pubDate,
+      pubDate: post.data.publishDate,
       description: post.data.description,
       link: `/blog/${post.slug}/`,
     })),

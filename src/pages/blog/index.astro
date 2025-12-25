@@ -6,7 +6,7 @@ const posts = await getCollection("blog");
 
 // Sort newest → oldest
 posts.sort(
-  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+  (a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
 );
 ---
 
@@ -34,7 +34,7 @@ posts.sort(
 
 
         <time class="text-sm text-gray-500 dark:text-gray-500">
-          {post.data.pubDate.toLocaleDateString()}
+          {new Date(post.data.publishDate).toLocaleDateString()}
         </time>
       </article>
       ))}

@@ -1,7 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import ServiceCard from "../components/ServiceCard.astro";
 import { projects } from "../data/projects";
+import { services } from "../data/services";
 ---
 
 <BaseLayout
@@ -9,7 +11,7 @@ import { projects } from "../data/projects";
   description="We build high-quality web applications for modern businesses."
 >
   <!-- Hero -->
-  <section class="text-center mb-24">
+  <section id="hero" class="text-center mb-24 opacity-0">
     <h1 class="text-4xl font-bold mb-4">
       We Build High-Quality Web Applications
     </h1>
@@ -18,11 +20,21 @@ import { projects } from "../data/projects";
     </p>
   </section>
 
+  <!-- Services -->
+  <section id="services" class="mb-24 opacity-0">
+    <h2 class="text-3xl font-bold text-center mb-10">Our Services</h2>
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {services.map(service => (
+        <ServiceCard service={service} />
+      ))}
+    </div>
+  </section>
+
   <!-- Projects -->
-  <section class="mb-24">
+  <section id="projects" class="mb-24 opacity-0">
     <div class="flex justify-between items-center mb-10">
       <h2 class="text-3xl font-bold">Our Projects</h2>
-      <a href="/contact" class="text-blue-600 font-medium hover:underline">
+      <a href="/contact" class="text-primary font-medium hover:underline">
         Start a Project →
       </a>
     </div>
@@ -34,3 +46,11 @@ import { projects } from "../data/projects";
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  import { animate } from "motion";
+
+  animate("#hero", { opacity: 1, y: [50, 0] }, { duration: 0.5 });
+  animate("#services", { opacity: 1, y: [50, 0] }, { duration: 0.5, delay: 0.2 });
+  animate("#projects", { opacity: 1, y: [50, 0] }, { duration: 0.5, delay: 0.4 });
+</script>

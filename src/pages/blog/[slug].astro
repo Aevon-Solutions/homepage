@@ -21,8 +21,8 @@ const { Content } = await post.render();
 >
   <article class="prose dark:prose-invert">
     <h1>{post.data.title}</h1>
-    <time datetime={post.data.pubDate.toISOString()}>
-      {post.data.pubDate.toDateString()}
+    <time datetime={new Date(post.data.publishDate).toISOString()}>
+      {new Date(post.data.publishDate).toDateString()}
     </time>
     <Content />
   </article>
