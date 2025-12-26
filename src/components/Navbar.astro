@@ -8,10 +8,10 @@
     <!-- Desktop Navigation -->
     <div class="hidden md:flex items-center gap-6 text-sm font-medium">
       <a href="/blog" class="hover:text-blue-600">Blog</a>
-      <a href="#services" class="hover:text-blue-600">Services</a>
-      <a href="#projects" class="hover:text-blue-600">Projects</a>
-      <a href="#testimonials" class="hover:text-blue-600">Testimonials</a>
-      <a href="#contact" class="hover:text-blue-600">Contact</a>
+      <a href="/#services" class="hover:text-blue-600">Services</a>
+      <a href="/#projects" class="hover:text-blue-600">Projects</a>
+      <a href="/#testimonials" class="hover:text-blue-600">Testimonials</a>
+      <a href="/contact" class="hover:text-blue-600">Contact</a>
 
       <!-- Dark Mode Toggle -->
       <button
@@ -23,7 +23,7 @@
       </button>
 
       <a
-        href="#contact"
+        href="/contact"
         class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
       >
         Contact Us
@@ -50,10 +50,10 @@
   >
     <div class="max-w-7xl mx-auto px-6 flex flex-col gap-4">
       <a href="/blog" class="hover:text-blue-600 py-2 block">Blog</a>
-      <a href="#services" class="hover:text-blue-600 py-2 block">Services</a>
-      <a href="#projects" class="hover:text-blue-600 py-2 block">Projects</a>
-      <a href="#testimonials" class="hover:text-blue-600 py-2 block">Testimonials</a>
-      <a href="#contact" class="hover:text-blue-600 py-2 block">Contact</a>
+      <a href="/#services" class="hover:text-blue-600 py-2 block">Services</a>
+      <a href="/#projects" class="hover:text-blue-600 py-2 block">Projects</a>
+      <a href="/#testimonials" class="hover:text-blue-600 py-2 block">Testimonials</a>
+      <a href="/contact" class="hover:text-blue-600 py-2 block">Contact</a>
       
       <div class="flex items-center justify-between pt-4 border-t dark:border-gray-800">
         <!-- Dark Mode Toggle -->
@@ -83,8 +83,8 @@
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
 
-    // Load saved theme
-    if (localStorage.theme === "dark") {
+    // Load saved theme or default to dark
+    if (localStorage.theme === "dark" || !("theme" in localStorage)) {
       html.classList.add("dark");
     }
 

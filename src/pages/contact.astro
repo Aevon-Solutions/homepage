@@ -6,52 +6,144 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   title="Contact – AevonSolutions"
   description="Get in touch to discuss your web or mobile software project."
 >
-  <section class="max-w-2xl">
-    <h1 class="text-4xl font-bold mb-6">Contact Us</h1>
+  <section class="py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-10">
+        <h1 class="animate-on-scroll text-5xl font-extrabold text-slate-900 dark:text-white mb-4">Contact Us</h1>
+        <p class="animate-on-scroll delay-100 text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+          Ready to start your next project? We'd love to hear from you.
+        </p>
+      </div>
 
-    <form
-      method="POST"
-      class="space-y-6"
-    >
-      <input
-        type="text"
-        name="name"
-        placeholder="Your Name"
-        required
-        class="w-full border dark:border-gray-700
-        bg-white dark:bg-gray-900
-        text-gray-900 dark:text-gray-100
-        px-4 py-3 rounded-lg"
-      />
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+        <!-- Contact Info -->
+        <div class="animate-on-scroll delay-200">
+          <div class="bg-blue-600 rounded-2xl p-8 lg:p-12 text-white shadow-xl">
+            <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+            <p class="text-blue-100 mb-8 leading-relaxed">
+              Fill out the form or reach out to us directly. We'll get back to you within 24 hours.
+            </p>
 
-      <input
-        type="email"
-        name="email"
-        placeholder="Your Email"
-        required
-        class="w-full border dark:border-gray-700
-        bg-white dark:bg-gray-900
-        text-gray-900 dark:text-gray-100
-        px-4 py-3 rounded-lg"
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <span class="text-2xl mr-4">📧</span>
+                 <div>
+                  <p class="font-medium text-blue-100 uppercase text-sm tracking-wide">Email</p>
+                  <a href="mailto:hello@aevonsolutions.com" class="text-lg font-semibold hover:text-blue-200 transition">hello@aevonsolutions.com</a>
+                 </div>
+              </div>
+               <div class="flex items-start">
+                <span class="text-2xl mr-4">📞</span>
+                 <div>
+                  <p class="font-medium text-blue-100 uppercase text-sm tracking-wide">Phone</p>
+                  <a href="tel:+1234567890" class="text-lg font-semibold hover:text-blue-200 transition">+1 (555) 123-4567</a>
+                 </div>
+              </div>
+               <div class="flex items-start">
+                <span class="text-2xl mr-4">📍</span>
+                 <div>
+                  <p class="font-medium text-blue-100 uppercase text-sm tracking-wide">Office</p>
+                  <p class="text-lg font-semibold">123 Innovation Dr.<br>Tech City, TC 90210</p>
+                 </div>
+              </div>
+            </div>
 
-      />
+             <div class="mt-12 pt-8 border-t border-blue-500">
+                <p class="text-blue-100 text-sm">Follow us on social media</p>
+                <div class="flex gap-4 mt-4">
+                  <!-- Social placeholders -->
+                  <a href="#" class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center hover:bg-white hover:text-blue-600 transition">𝕏</a>
+                  <a href="#" class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center hover:bg-white hover:text-blue-600 transition">in</a>
+                </div>
+             </div>
+          </div>
+        </div>
 
-      <textarea
-        name="message"
-        placeholder="Tell us about your project"
-        rows="5"
-        class="w-full border dark:border-gray-700
-        bg-white dark:bg-gray-900
-        text-gray-900 dark:text-gray-100
-        px-4 py-3 rounded-lg"
-      ></textarea>
+        <!-- Contact Form -->
+        <div class="animate-on-scroll delay-300 bg-white dark:bg-slate-900 p-8 lg:p-12 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+          <form method="POST" class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Full Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="John Doe"
+                  required
+                  class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-600 outline-none transition"
+                />
+              </div>
+               <div>
+                <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Email Address</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="john@example.com"
+                  required
+                  class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-600 outline-none transition"
+                />
+              </div>
+            </div>
 
-      <button
-        type="submit"
-        class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
-      >
-        Send Message
-      </button>
-    </form>
+             <div>
+                <label for="subject" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Subject</label>
+                <input
+                  type="text"
+                  name="subject"
+                  id="subject"
+                  placeholder="Project Inquiry"
+                  required
+                   class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-600 outline-none transition"
+                />
+              </div>
+
+            <div>
+              <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Message</label>
+              <textarea
+                name="message"
+                id="message"
+                placeholder="Tell us about your project..."
+                rows="5"
+                 class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-600 outline-none transition"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-blue-600 text-white font-bold px-8 py-4 rounded-lg hover:bg-blue-700 transition shadow-lg shadow-blue-500/30"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
   </section>
+  
+  <script>
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            (entry.target as HTMLElement).style.animationPlayState = 'running';
+            observer.unobserve(entry.target);
+        }
+        });
+    }, observerOptions);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        animatedElements.forEach(el => {
+        (el as HTMLElement).style.animationPlayState = 'paused';
+        observer.observe(el);
+        });
+    });
+  </script>
 </BaseLayout>
