@@ -19,29 +19,83 @@ const { Content } = await post.render();
   title={post.data.title}
   description={post.data.description}
 >
-  <article class="max-w-3xl mx-auto px-4">
-    <header class="mb-12 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">{post.data.title}</h1>
-      <div class="flex items-center justify-center text-gray-600 dark:text-gray-400 mb-6">
-        <time datetime={new Date(post.data.publishDate).toISOString()}>
-          {new Date(post.data.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-        </time>
-        {post.data.author && (
-          <span class="mx-2">•</span>
-        )}
-        {post.data.author && (
-          <span>{post.data.author}</span>
-        )}
+  <!-- Progress Bar (Optional, can add later) -->
+  
+  <article class="py-20 lg:py-24">
+    <!-- Header -->
+    <header class="max-w-4xl mx-auto px-6 text-center mb-16 animate-on-scroll">
+      <div class="mb-6">
+        <a href="/blog" class="inline-flex items-center text-sm font-medium text-slate-500 hover:text-blue-600 transition">
+          ← Back to Blog
+        </a>
       </div>
-      {post.data.description && (
-        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+      
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white mb-8 leading-tight">
+        {post.data.title}
+      </h1>
+      
+      <div class="flex items-center justify-center gap-6 text-slate-600 dark:text-slate-400 text-sm md:text-base">
+         <div class="flex items-center">
+             <span>{new Date(post.data.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+         </div>
+         {post.data.author && (
+            <div class="flex items-center">
+              <span class="w-1 h-1 bg-slate-400 rounded-full mx-3"></span>
+              <span class="font-medium text-slate-900 dark:text-white">{post.data.author}</span>
+            </div>
+         )}
+      </div>
+    </header>
+
+    <!-- Content -->
+    <div class="animate-on-scroll delay-100 max-w-3xl mx-auto px-6">
+       <!-- Description / Lead -->
+       {post.data.description && (
+        <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-300 leading-relaxed mb-12 font-medium border-l-4 border-blue-600 pl-6">
           {post.data.description}
         </p>
       )}
-    </header>
-    
-    <div class="prose prose-lg dark:prose-invert prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:underline prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:italic prose-blockquote:text-gray-700 dark:prose-blockquote:text-gray-300 prose-code:text-gray-800 dark:prose-code:text-gray-200 prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 dark:prose-pre:bg-gray-800 prose-pre:text-gray-100 dark:prose-pre:text-gray-200 prose-pre:p-4 prose-pre:rounded-lg prose-img:rounded-lg prose-img:shadow-md">
-      <Content />
+      
+      <div class="prose prose-lg md:prose-xl dark:prose-invert 
+        prose-headings:font-bold prose-headings:text-slate-900 dark:prose-headings:text-white 
+        prose-p:text-slate-700 dark:prose-p:text-slate-300 prose-p:leading-relaxed
+        prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline prose-a:border-b-2 prose-a:border-blue-200 hover:prose-a:border-blue-600 transition-colors
+        prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:bg-slate-50 dark:prose-blockquote:bg-slate-800/50 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-lg
+        prose-img:rounded-2xl prose-img:shadow-xl
+        prose-code:text-blue-600 dark:prose-code:text-blue-400 prose-code:bg-blue-50 dark:prose-code:bg-blue-900/30 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:font-medium
+        mx-auto">
+        <Content />
+      </div>
+
+      <!-- Share / Footer (Optional) -->
+      <div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center">
+          <a href="/blog" class="text-blue-600 font-semibold hover:text-blue-700 transition">← Read more articles</a>
+      </div>
     </div>
   </article>
+
+    <script>
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            (entry.target as HTMLElement).style.animationPlayState = 'running';
+            observer.unobserve(entry.target);
+        }
+        });
+    }, observerOptions);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        animatedElements.forEach(el => {
+        (el as HTMLElement).style.animationPlayState = 'paused';
+        observer.observe(el);
+        });
+    });
+  </script>
 </BaseLayout>
